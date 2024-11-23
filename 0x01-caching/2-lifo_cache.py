@@ -3,15 +3,18 @@
 
 """
 This module illustrates how to do simple caching
-in python
+in python. This time, we will do FIFO caching.
+If the cache is at maximum capacity, we will discard
+the first item in and add the new one (FIFO)
 """
 
 BaseCaching = __import__("base_caching").BaseCaching
 
 
-class BasicCache(BaseCaching):
+class LIFOCache(BaseCaching):
     """
     A prety basic caching  system implementation
+    Based on a FIFO list
     """
 
     def __init__(self):
@@ -29,6 +32,11 @@ class BasicCache(BaseCaching):
         Returns:
             Returns None (explicitly)
         """
+
+        if len(self.cache_data.keys()) >= super().MAX_ITEMS:
+            last_key = list(self.cache_data.keys())[-1]
+            self.cache_data.pop(last_key)
+            print(f'DISCARD: {last_key}')
         if key and item:
             self.cache_data[key] = item
 
