@@ -8,6 +8,7 @@ learn and practice i18n in flask
 from flask import Flask,  render_template
 from flask_babel import Babel
 
+
 class Config:
     """
     Configure the babel object
@@ -15,6 +16,7 @@ class Config:
     LANGUAGES = ["en", "fr"]
     BABEL_DEFAULT_LOCALE = 'en'
     BABEL_DEFAULT_TIMEZONE = 'UTC'
+
 
 app = Flask(__name__)
 babel = Babel(app)
@@ -36,7 +38,7 @@ def hello_holberton():
     Example
         hello_hoberton()
     """""
-    return render_template("0-index.html")
+    return render_template("1-index.html")
 
 
 if __name__ == "__main__":
